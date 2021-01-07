@@ -1,0 +1,48 @@
+.hidden {
+	display: none;
+}
+.showing {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form input {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding: 15px 0px;
+	margin-top: 40px;
+}
+
+.form input:focus {
+	border-color: olivedrab;
+}
+
+.greeting {
+	font-size: 20px;
+	color: forestgreen;
+	padding: 15px 0px;
+	margin-top: 40px;
+}
+.timer {
+	margin-top: 150px;
+	display: flex;
+	flex-direction: column;
+}
+
+.timer_number {
+	color: tomato;
+	font-family: monospace;
+	font-weight: 300;
+	font-size: 40px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.timer_control {
+	display: flex;
+	justify-content: space-evenly;
+}

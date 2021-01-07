@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="stylesheet.css" />
+		<title>Pomodoro timer</title>
+	</head>
+	<body>
+		<form class="js-form form hidden">
+			<input type="text" placeholder="What is your name?" />
+		</form>
+		<h1 class="js-greetings greeting hidden"></h1>
+		<div class="js-timer timer">
+			<span class="js-timer_number timer_number">00:00</span>
+			<div class="js-timer_control timer_control">
+				<button class="timer_start">start</button>
+				<button class="timer_stop">stop</button>
+				<button class="timer_reset">reset</button>
+			</div>
+		</div>
+		<script src="greeting.js"></script>
+		<script src="timer.js"></script>
+	</body>
+</html>
