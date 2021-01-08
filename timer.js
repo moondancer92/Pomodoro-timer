@@ -1,40 +1,64 @@
 const timerNumber = document.querySelector(".js-timer_number"),
 	timerStart = document.querySelector(".timer_start"),
-	timerStop = document.querySelector(".timer_stop"),
+	timerPause = document.querySelector(".timer_puase"),
 	timerReset = document.querySelector(".timer_reset");
 
-const SAVEDTIME_LS = "savedTime";
+let difference;
+let savedTime;
+let start = false;
 
-const savedTime = localStorage.getItem(SAVEDTIME_LS);
 
+function btnEvt() {
+	
+	timerStart.addEventListener("click", startTimer);
+	timerPause.addEventListener("click",puauseTimer);
+	timerReset.addEventListener("click",resetTimer);
+}
 function startTimer() {
 	startTime = new Date().getTime();
+	if(!start){
 	tInterval = setInterval(getShowTime, 1000);
-}
-
-function stopTime() {
-	const savedTime = localStorage.getItem(SAVEDTIME_LS);
-	if (savedTime !== null) {
-		startTimer();
-	} else {
-		clearInterval(tInterval);
-		saveTime();
+	start = true;
 	}
+	else{
+
+	}
+	// start the clock 
+}
+function puauseTimer(){
+	if(start){
+		clearInterval(tInterval)
+		savedTime = difference
+		start = false;
+		timerPause.innerText = 'restart'
+// pause the clock
+	}
+	else if (!savedTime) {
+// prevent pause button				
+	}
+	else {
+		startTimer();
+		timerPause.innerText ='pause'
+	}
+// restart the clock	
 }
 
-function restTimer() {
-	localStorage.removeItem(SAVEDTIME_LS);
+function resetTimer(){
+	clearInterval(tInterval)
+	savedTime = null
+	timerNumber.innerText ="00:00:00" 
+	start =false;
 }
 
 function getShowTime() {
 	updatedTime = new Date().getTime();
-	const savedTime = localStorage.getItem(SAVEDTIME_LS);
-	const parsedSavedTime = JSON.parse(savedTime);
-	if (savedTime !== null) {
-		difference = updatedTime - startTime + parsedSavedTime;
-	} else {
-		difference = updatedTime - startTime;
+	if(!savedTime){
+	difference = updatedTime - startTime;
 	}
+	else{
+		difference = savedTime + updatedTime - startTime;
+	}
+
 	let hours = Math.floor(
 		(difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
 	);
@@ -47,18 +71,9 @@ function getShowTime() {
 	timerNumber.innerHTML = hours + ":" + minutes + ":" + seconds;
 }
 
-function saveTime() {
-	localStorage.setItem(SAVEDTIME_LS, difference);
-}
-
-function timerhandler() {
-	timerStart.addEventListener("click", startTimer);
-	timerStop.addEventListener("click", stopTime);
-	timerReset.addEventListener("click", restTimer);
-}
 
 function init() {
-	timerhandler();
+	btnEvt();
 }
 
 init();
