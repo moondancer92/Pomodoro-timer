@@ -8,6 +8,7 @@
 }
 
 .form input {
+	text-align: center;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 	border-top: none;
 	border-left: none;
@@ -45,4 +46,12 @@
 .timer_control {
 	display: flex;
 	justify-content: space-evenly;
+}
+
+.timer_status {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
