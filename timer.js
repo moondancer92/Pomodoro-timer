@@ -2,12 +2,38 @@ const timerNumber = document.querySelector(".js-timer_number"),
 	timerStart = document.querySelector(".timer_start"),
 	timerPause = document.querySelector(".timer_puase"),
 	timerReset = document.querySelector(".timer_reset"),
-	timerStatus = document.querySelector(".js-timer_stauts");
+	timerStatus = document.querySelector(".js-timer_stauts"),
+	input_cycle = document.querySelector(".js-input_cycle"),
+	form_cycle = document.querySelector(".js-timer_cycle"),
+	cycle_number = document.querySelector(".js-timer_cycle_number");
+
+count = 0;
+
+function handleCycleSubmit(evt) {
+	evt.preventDefault()
+	const currentValue = parseInt(input_cycle.value);
+	paintCycle(currentValue)
+	eventHandler.startTimer();
+}	
+
+function paintCycle(number) {
+	if(!number){
+	}
+	else{
+	cycle_number.innerText =`OK! ${number}`
+	}	
+}
+
+
+form_cycle.addEventListener("submit",handleCycleSubmit);
+timerStart.addEventListener("click", handleCycleSubmit);
+
 
 
 const eventHandler = {
 	
 	startTimer:	function () {
+		
 			if(!eventHandler.startTimer.start){	
 			startTime = new Date().getTime();
 			tInterval = setInterval(eventHandler.getShowTime, 1000);
@@ -18,6 +44,7 @@ const eventHandler = {
 			
 	},
 	puauseTimer: function (){
+		
 		if(start){
 			clearInterval(tInterval)
 			eventHandler.startTimer.savedTime = difference
@@ -36,6 +63,7 @@ const eventHandler = {
 	},
 
 	resetTimer:function (){
+		
 		if(!tInterval){
 		
 		}
@@ -69,42 +97,48 @@ const eventHandler = {
 	
 		timerNumber.innerHTML = hours + ":" + minutes + ":" + seconds;
 		
+		
 		eventHandler.pomodoroEvt()
+		
+
 	},
+
 
 	pomodoroEvt:function (){
 		if(!this.takeBreak){
 			timerStatus.innerText = 'Working Time!'
-			if(seconds == 10){
+			if(seconds == 3){
 				eventHandler.resetTimer();
 				timerStatus.innerText = 'Take a Break'
 				this.takeBreak = true
 				eventHandler.startTimer();
 			}	
-			//when working
+			// work to break
 		}
 		else{
-			if(seconds == 10){
+			if(seconds == 3){
 				eventHandler.resetTimer();
 				timerStatus.innerText = 'Working Time!'
 				eventHandler.startTimer();
 				this.takeBreak = false
+				count++;
 			}
-			//when taking a break
+
+			console.log(count)
 		}
-		}
+		//break to work
+	}	
 		
 }
 
 function btnEvt() {
-	
-	timerStart.addEventListener("click", eventHandler.startTimer);
 	timerPause.addEventListener("click",eventHandler.puauseTimer);
 	timerReset.addEventListener("click",eventHandler.resetTimer);
 }
 
 function init() {
 	btnEvt();
+	
 	}
 	
 

@@ -28,7 +28,7 @@
 	margin-top: 40px;
 }
 .timer {
-	margin-top: 150px;
+	margin-top: 100px;
 	display: flex;
 	flex-direction: column;
 }
@@ -41,6 +41,15 @@
 	margin-bottom: 30px;
 	display: flex;
 	justify-content: center;
+}
+
+.timer_cycle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	block-size: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 35px;
 }
 
 .timer_control {
