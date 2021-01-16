@@ -9,26 +9,24 @@ const timerNumber = document.querySelector(".js-timer_number"),
 
 count = 0;
 
-function handleCycleSubmit(evt) {
-	evt.preventDefault()
-	const currentValue = parseInt(input_cycle.value);
-	paintCycle(currentValue)
-	eventHandler.startTimer();
-}	
+const pomdSystem ={
 
-function paintCycle(number) {
-	if(!number){
+	handleCycleSubmit: function (evt) {
+		evt.preventDefault()
+		currentValue = parseInt(input_cycle.value);
+		pomdSystem.paintCycle(currentValue)
+		eventHandler.startTimer();
+	},
+
+	paintCycle :function (number) {
+		if(!number){
+		}
+		else{
+		cycle_number.innerText =`OK! ${number}`
+		}	
 	}
-	else{
-	cycle_number.innerText =`OK! ${number}`
-	}	
-}
-
-
-form_cycle.addEventListener("submit",handleCycleSubmit);
-timerStart.addEventListener("click", handleCycleSubmit);
-
-
+}	
+	
 
 const eventHandler = {
 	
@@ -110,6 +108,9 @@ const eventHandler = {
 			if(seconds == 3){
 				eventHandler.resetTimer();
 				timerStatus.innerText = 'Take a Break'
+				count++;
+				console.log(count)
+				console.log(currentValue)
 				this.takeBreak = true
 				eventHandler.startTimer();
 			}	
@@ -117,14 +118,21 @@ const eventHandler = {
 		}
 		else{
 			if(seconds == 3){
-				eventHandler.resetTimer();
-				timerStatus.innerText = 'Working Time!'
-				eventHandler.startTimer();
-				this.takeBreak = false
-				count++;
+				if(count === currentValue){
+					eventHandler.resetTimer();
+					timerStatus.innerText = 'jobs done!'
+					this.takeBreak = false
+					count = 0;
+				}
+				else{
+					eventHandler.resetTimer();
+					timerStatus.innerText = 'Working Time!'
+					eventHandler.startTimer();
+					this.takeBreak = false
+					
+				}
 			}
 
-			console.log(count)
 		}
 		//break to work
 	}	
@@ -132,6 +140,8 @@ const eventHandler = {
 }
 
 function btnEvt() {
+	form_cycle.addEventListener("submit",pomdSystem.handleCycleSubmit);
+	timerStart.addEventListener("click", pomdSystem.handleCycleSubmit);
 	timerPause.addEventListener("click",eventHandler.puauseTimer);
 	timerReset.addEventListener("click",eventHandler.resetTimer);
 }
