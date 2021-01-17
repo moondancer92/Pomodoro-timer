@@ -5,7 +5,9 @@ const timerNumber = document.querySelector(".js-timer_number"),
 	timerStatus = document.querySelector(".js-timer_stauts"),
 	input_cycle = document.querySelector(".js-input_cycle"),
 	form_cycle = document.querySelector(".js-timer_cycle"),
-	cycle_number = document.querySelector(".js-timer_cycle_number");
+	cycle_number = document.querySelector(".js-timer_cycle_number"),
+	count_number = document.querySelector(".js-timer_count_number"),
+	remain_number = document.querySelector(".js-timer_remain_number");
 
 count = 0;
 
@@ -13,7 +15,7 @@ const pomdSystem ={
 
 	handleCycleSubmit: function (evt) {
 		evt.preventDefault()
-		currentValue = parseInt(input_cycle.value);
+		currentValue = parseInt(input_cycle.value)*2;
 		pomdSystem.paintCycle(currentValue)
 		eventHandler.startTimer();
 	},
@@ -22,7 +24,7 @@ const pomdSystem ={
 		if(!number){
 		}
 		else{
-		cycle_number.innerText =`OK! ${number}`
+		cycle_number.innerText =`Working hour: ${number/2} h`
 		}	
 	}
 }	
@@ -103,21 +105,28 @@ const eventHandler = {
 
 
 	pomodoroEvt:function (){
+		count_number.innerText =`finished cycle : ${count}`
+		if(!currentValue){
+
+		}else{
+		const remainNumber = currentValue - count
+		console.log(remainNumber);
+		remain_number.innerHTML = `remain cycle : ${remainNumber}`
+		}
 		if(!this.takeBreak){
 			timerStatus.innerText = 'Working Time!'
-			if(seconds == 3){
+			if(minutes == 25){
 				eventHandler.resetTimer();
 				timerStatus.innerText = 'Take a Break'
 				count++;
-				console.log(count)
-				console.log(currentValue)
 				this.takeBreak = true
 				eventHandler.startTimer();
+				
 			}	
 			// work to break
 		}
 		else{
-			if(seconds == 3){
+			if(minutes == 5){
 				if(count === currentValue){
 					eventHandler.resetTimer();
 					timerStatus.innerText = 'jobs done!'

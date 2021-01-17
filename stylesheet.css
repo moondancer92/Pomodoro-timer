@@ -1,3 +1,7 @@
+body {
+	background-color: rgba(255, 135, 113, 0.8);
+}
+
 .hidden {
 	display: none;
 }
@@ -15,6 +19,10 @@
 	border-right: none;
 	padding: 15px 0px;
 	margin-top: 40px;
+}
+
+.form input:focus {
+	outline: none;
 }
 
 .form input:focus {
@@ -57,10 +65,30 @@
 	justify-content: space-evenly;
 }
 
+.timer_control button {
+	border: none;
+	border-radius: 50%;
+	height: 40px;
+	background-color: tomato;
+	font-family: monospace;
+	font-weight: 500;
+	color: whitesmoke;
+}
+
+button:focus {
+	outline: none;
+}
+
 .timer_status {
 	padding-bottom: 0px;
 	margin-bottom: 0px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.pomodoro-status {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 }

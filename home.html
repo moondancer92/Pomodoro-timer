@@ -11,12 +11,16 @@
 		</form>
 		<h1 class="js-greetings greeting hidden"></h1>
 		<div class="js-timer timer">
-			<span class="js-timer_stauts timer_status">hey</span>
+			<span class="js-timer_stauts timer_status">please input the working hour of today</span>
 			<span class="js-timer_number timer_number">00:00:00</span>
 			<form class="js-timer_cycle form timer_cycle">
-				<input class="js-input_cycle" type="text" placeholder="cycle">
+				<input class="js-input_cycle input_cycle" type="text" placeholder="WORKING HOUR">
 			</form>
-			<h2 class = "js-timer_cycle_number"></h2>
+			<div class="pomodoro-status">
+				<h2 class = "js-timer_cycle_number"></h2>
+				<h2 class = "js-timer_count_number"></h2>
+				<h2 class="js-timer_remain_number"></h2>
+			</div>
 			<div class="js-timer_control timer_control">
 				<button class="timer_start">start</button>
 				<button class="timer_puase">pause</button>
