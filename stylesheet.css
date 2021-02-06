@@ -92,35 +92,3 @@ button:focus {
 	align-items: center;
 	justify-content: space-evenly;
 }
-
-input[type="radio"] {
-	display: none;
-}
-
-input[type="radio"]#pomodoro__timer:checked
-	~ nav
-	> label[for="pomodoro__timer"] {
-	background-color: white;
-}
-
-.nav {
-	position: fixed;
-	z-index: 2;
-	right: 30px;
-	top: 50%;
-}
-
-.nav__item {
-	width: 12px;
-	height: 12px;
-	display: block;
-	margin: 12px;
-	border: solid 2px white;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
-}
-
-.nav__item:hover {
-	background-color: rgb(76, 213, 76);
-}

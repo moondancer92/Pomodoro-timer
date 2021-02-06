@@ -6,21 +6,12 @@
 		<title>Pomodoro timer</title>
 	</head>
 	<body>
-		<input type="radio" id="pomodoro__timer"/>
-		<input type="radio"  id="todo"/>
-		<input type="radio"  id="weather"/>
-		<nav>
-			<label class="nav__item" for="pomodoro__timer"></label>
-			<label class="nav__item" for="todo"></label>
-			<label class="nav__item" for="weather"></label>
-		</nav>
-		<section>
-			<form class="js-form form hidden">
-				<input  type="text" placeholder="What is your name?" />
-			</form>
-			<h1 class="js-greetings greeting hidden"></h1>
-			<div class="js-timer timer">
-				<span class="js-timer_stauts timer_status">please input the working hour of today</span>
+		<form class="js-form form hidden">
+			<input  type="text" placeholder="What is your name?" />
+		</form>
+		<h1 class="js-greetings greeting hidden"></h1>
+		<div class="js-timer timer">
+			<span class="js-timer_stauts timer_status">please input the working hour of today</span>
 				<span class="js-timer_number timer_number">00:00:00</span>
 				<form class="js-timer_cycle form timer_cycle">
 					<input class="js-input_cycle input_cycle" type="text" placeholder="WORKING HOUR">
@@ -36,7 +27,7 @@
 					<button class="timer_reset">reset</button>
 				</div>
 			</div>
-		</section>
+
 	<script src="greeting.js"></script>
 	<script src="timer.js"></script>
 	</body>
